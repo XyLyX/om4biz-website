@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://om4biz.com/sitemap.xml
