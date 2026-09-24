@@ -1,4 +1,9 @@
-# Publishing to /updates/ and /feed.xml
+# Publishing to /insights/ and /feed.xml
+
+> The public section was renamed from "Updates" to "Insights" (Sept 2026).
+> The source data still lives in `updates/updates.json`; old `/updates/` URLs
+> 301-redirect to `/insights/` (see `netlify.toml`). Optional fields `author`
+> and `author_role` add a byline and Person schema to an entry.
 
 This section is generated at **Netlify build time**, not by hand and not
 by a manual local step. `updates/updates.json` is the single source of
@@ -25,7 +30,7 @@ python3 scripts/build_updates.py && python3 scripts/build_public.py
 
 This writes generated pages to `.build/` (gitignored) and assembles the
 full publishable site into `public/` (also gitignored) — open
-`public/updates/index.html` in a browser to check it before pushing.
+`public/insights/index.html` in a browser to check it before pushing.
 
 ## Field notes
 
@@ -76,6 +81,6 @@ Committed (source): `updates/updates.json`, `updates/updates.example.json`,
 this README, and `scripts/`.
 
 Generated, never committed (`.gitignore`'d): `.build/`, `public/` —
-including `updates/index.html`, `updates/<slug>/index.html`, and the root
+including `insights/index.html`, `insights/<slug>/index.html`, and the root
 `feed.xml`. Don't hand-edit anything under `public/` or `.build/`; it's
 overwritten on the next build.

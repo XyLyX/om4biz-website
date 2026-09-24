@@ -53,7 +53,7 @@ NAV = """<header class="nav">
       <li><a href="/about/">About</a></li>
       <li><a href="/what-we-do/">What We Do</a></li>
       <li><a href="/ventures/">Ventures</a></li>
-      <li><a href="/updates/"{updates_active}>Updates</a></li>
+      <li><a href="/insights/"{updates_active}>Insights</a></li>
       <li><a href="/leadership/">Leadership</a></li>
       <li><a href="/work-with-us/">Work With Us</a></li>
       <li><a href="/contact/" class="nav-cta">Contact</a></li>
@@ -73,7 +73,7 @@ FOOTER = """<footer>
         <ul>
           <li><a href="/about/">About</a></li>
           <li><a href="/what-we-do/">What We Do</a></li>
-          <li><a href="/updates/">Updates</a></li>
+          <li><a href="/insights/">Insights</a></li>
           <li><a href="/leadership/">Leadership</a></li>
           <li><a href="/contact/">Contact</a></li>
         </ul>
@@ -134,7 +134,7 @@ def load_entries():
 
 
 def entry_url(e):
-    return f"{BASE_URL}/updates/{e['slug']}/"
+    return f"{BASE_URL}/insights/{e['slug']}/"
 
 
 def nav_html(active_updates=True):
@@ -147,33 +147,33 @@ def render_hub(entries):
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Updates | OM4Biz</title>
+<title>Insights | OM4Biz</title>
 <meta name="description" content="Product announcements, launches, milestones and original business insights from OM4Biz Global Services and its portfolio.">
-<link rel="canonical" href="{BASE_URL}/updates/">
-<link rel="alternate" type="application/rss+xml" title="OM4Biz Updates" href="{BASE_URL}/feed.xml">
-<meta property="og:title" content="Updates | OM4Biz">
+<link rel="canonical" href="{BASE_URL}/insights/">
+<link rel="alternate" type="application/rss+xml" title="OM4Biz Insights" href="{BASE_URL}/feed.xml">
+<meta property="og:title" content="Insights | OM4Biz">
 <meta property="og:description" content="Product announcements, launches, milestones and original business insights from OM4Biz Global Services and its portfolio.">
 <meta property="og:image" content="{BASE_URL}/og-image.png">
 <meta property="og:type" content="website">
-<meta property="og:url" content="{BASE_URL}/updates/">
+<meta property="og:url" content="{BASE_URL}/insights/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/style.css">
 <script type="application/ld+json">
-{{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{{"@type":"ListItem","position":1,"name":"Home","item":"{BASE_URL}/"}},{{"@type":"ListItem","position":2,"name":"Updates","item":"{BASE_URL}/updates/"}}]}}
+{{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{{"@type":"ListItem","position":1,"name":"Home","item":"{BASE_URL}/"}},{{"@type":"ListItem","position":2,"name":"Insights","item":"{BASE_URL}/insights/"}}]}}
 </script>
 </head>
 <body>
 
 {nav_html()}
 
-<nav class="breadcrumb"><div class="wrap"><a href="/">Home</a> / Updates</div></nav>
+<nav class="breadcrumb"><div class="wrap"><a href="/">Home</a> / Insights</div></nav>
 
 <section class="page-hero">
   <div class="wrap">
-    <span class="mono">Updates</span>
+    <span class="mono">Insights</span>
     <h1>News, launches and insights from across OM4Biz.</h1>
     <p class="lead">Product announcements, venture launches, milestones and original business insights — published here as they genuinely happen. <a href="/feed.xml" class="rss-link">Subscribe via RSS →</a></p>
   </div>
@@ -195,9 +195,9 @@ def render_hub(entries):
       {img}
       <div>
         <span class="mono update-meta">{format_display_date(e["date"])} · {e["type"]}</span>
-        <h3><a href="/updates/{e['slug']}/">{escape_html(e['title'])}</a></h3>
+        <h3><a href="/insights/{e['slug']}/">{escape_html(e['title'])}</a></h3>
         <p>{escape_html(e['excerpt'])}</p>
-        <a class="card-link" href="/updates/{e['slug']}/">Read more →</a>
+        <a class="card-link" href="/insights/{e['slug']}/">Read more →</a>
       </div>
     </div>""")
         body = "    <div class=\"update-list\">\n" + "\n".join(cards) + "\n    </div>\n"
@@ -226,16 +226,20 @@ def render_entry(e):
     published_rfc = format_datetime(datetime.strptime(e["date"], "%Y-%m-%d").replace(tzinfo=timezone.utc))
     og_image = e["image"] if e["image"] else f"{BASE_URL}/og-image.png"
     og_image_full = og_image if og_image.startswith("http") else f"{BASE_URL}{og_image}"
+    author = e.get("author", "")
+    author_role = e.get("author_role", "")
+    author_ld = f',"author":{{"@type":"Person","name":{json.dumps(author)},"url":"{BASE_URL}/leadership/"}}' if author else ""
+    byline = f'<p class="update-byline">By <strong>{escape_html(author)}</strong>{", " + escape_html(author_role) if author_role else ""}</p>' if author else ""
     image_block = f'<img src="{e["image"]}" alt="{escape_html(e["title"])}" style="width:100%;border-radius:2px;margin-bottom:32px;">' if e["image"] else ""
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{escape_html(e['title'])} | OM4Biz Updates</title>
+<title>{escape_html(e['title'])} | OM4Biz Insights</title>
 <meta name="description" content="{escape_html(e['excerpt'])}">
 <link rel="canonical" href="{canonical}">
-<link rel="alternate" type="application/rss+xml" title="OM4Biz Updates" href="{BASE_URL}/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="OM4Biz Insights" href="{BASE_URL}/feed.xml">
 <meta property="og:title" content="{escape_html(e['title'])}">
 <meta property="og:description" content="{escape_html(e['excerpt'])}">
 <meta property="og:image" content="{og_image_full}">
@@ -247,23 +251,24 @@ def render_entry(e):
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/style.css">
 <script type="application/ld+json">
-{{"@context":"https://schema.org","@type":"Article","headline":{json.dumps(e['title'])},"datePublished":"{e['date']}","description":{json.dumps(e['excerpt'])},"url":"{canonical}","publisher":{{"@type":"Organization","name":"OM4Biz Global Services"}}}}
+{{"@context":"https://schema.org","@type":"Article","headline":{json.dumps(e['title'])},"datePublished":"{e['date']}","description":{json.dumps(e['excerpt'])},"url":"{canonical}","publisher":{{"@type":"Organization","name":"OM4Biz Global Services"}}{author_ld}}}
 </script>
 <script type="application/ld+json">
-{{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{{"@type":"ListItem","position":1,"name":"Home","item":"{BASE_URL}/"}},{{"@type":"ListItem","position":2,"name":"Updates","item":"{BASE_URL}/updates/"}},{{"@type":"ListItem","position":3,"name":{json.dumps(e['title'])},"item":"{canonical}"}}]}}
+{{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{{"@type":"ListItem","position":1,"name":"Home","item":"{BASE_URL}/"}},{{"@type":"ListItem","position":2,"name":"Insights","item":"{BASE_URL}/insights/"}},{{"@type":"ListItem","position":3,"name":{json.dumps(e['title'])},"item":"{canonical}"}}]}}
 </script>
 </head>
 <body>
 
 {nav_html()}
 
-<nav class="breadcrumb"><div class="wrap"><a href="/">Home</a> / <a href="/updates/">Updates</a> / {escape_html(e['title'])}</div></nav>
+<nav class="breadcrumb"><div class="wrap"><a href="/">Home</a> / <a href="/insights/">Insights</a> / {escape_html(e['title'])}</div></nav>
 
 <section class="page-hero">
   <div class="wrap">
     <span class="mono update-meta">{format_display_date(e["date"])} · {e["type"]}</span>
     <h1>{escape_html(e['title'])}</h1>
     <p class="lead">{escape_html(e['excerpt'])}</p>
+    {byline}
   </div>
 </section>
 
@@ -273,7 +278,7 @@ def render_entry(e):
     <div class="update-body reveal">
 {e['body_html']}
     </div>
-    <p style="margin-top:56px;"><a href="/updates/" class="card-link">← Back to Updates</a></p>
+    <p style="margin-top:56px;"><a href="/insights/" class="card-link">← Back to Insights</a></p>
   </div>
 </section>
 
@@ -317,8 +322,8 @@ def render_feed(entries):
     return f"""<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
-    <title>OM4Biz Updates</title>
-    <link>{BASE_URL}/updates/</link>
+    <title>OM4Biz Insights</title>
+    <link>{BASE_URL}/insights/</link>
     <atom:link href="{BASE_URL}/feed.xml" rel="self" type="application/rss+xml" />
     <description>Product announcements, launches, milestones and original business insights from OM4Biz Global Services and its portfolio.</description>
     <language>en</language>
@@ -358,7 +363,7 @@ def main():
 
     if os.path.isdir(BUILD_DIR):
         shutil.rmtree(BUILD_DIR)
-    build_updates_dir = os.path.join(BUILD_DIR, "updates")
+    build_updates_dir = os.path.join(BUILD_DIR, "insights")
     os.makedirs(build_updates_dir, exist_ok=True)
 
     with open(os.path.join(build_updates_dir, "index.html"), "w", encoding="utf-8") as f:

@@ -10,7 +10,7 @@ from a previous build.
 What goes into public/:
   - The 12 existing site pages and shared assets, copied as-is.
   - robots.txt, sitemap.xml, og-image.png.
-  - .build/updates/  -> public/updates/   (generated hub + published entries)
+  - .build/insights/ -> public/insights/   (generated hub + published entries)
   - .build/feed.xml  -> public/feed.xml   (generated feed)
 
 What is explicitly excluded (never copied):
@@ -56,10 +56,10 @@ def main():
             shutil.copytree(src, os.path.join(PUBLIC_DIR, d))
             copied.append(d + "/")
 
-    build_updates_dir = os.path.join(BUILD_DIR, "updates")
+    build_updates_dir = os.path.join(BUILD_DIR, "insights")
     if os.path.isdir(build_updates_dir):
-        shutil.copytree(build_updates_dir, os.path.join(PUBLIC_DIR, "updates"))
-        copied.append("updates/ (generated)")
+        shutil.copytree(build_updates_dir, os.path.join(PUBLIC_DIR, "insights"))
+        copied.append("insights/ (generated)")
 
     build_feed = os.path.join(BUILD_DIR, "feed.xml")
     if os.path.isfile(build_feed):

@@ -1,3 +1,9 @@
 [build]
   command = "python3 scripts/build_updates.py && python3 scripts/build_public.py"
   publish = "public"
+
+# "Updates" section renamed to "Insights" (Sept 2026) — keep old links working.
+[[redirects]]
+  from = "/updates/*"
+  to = "/insights/:splat"
+  status = 301
