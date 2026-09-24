@@ -1,0 +1,12 @@
+[
+  {
+    "slug": "example-entry-do-not-publish",
+    "title": "Example entry — copy this block into updates.json to publish a real one",
+    "type": "Announcement",
+    "date": "2026-09-24",
+    "draft": false,
+    "excerpt": "One or two honest sentences summarising what actually happened. No superlatives that aren't backed by fact.",
+    "image": "",
+    "body_html": "<p>Full body copy as plain HTML paragraphs. Keep it factual — this is public-facing and syndicated to NavvyaSignal.</p>"
+  }
+]

@@ -194,6 +194,24 @@ blockquote{
 .timeline-row .detail li{margin-bottom:5px;}
 @media (max-width:860px){.timeline-row{grid-template-columns:1fr;gap:6px;}}
 
+/* Updates */
+.rss-link{font-family:'IBM Plex Mono',monospace;font-size:0.82rem;color:var(--navy);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:2px;}
+.rss-link:hover{color:var(--gold);}
+.empty-state{max-width:640px;padding:48px 0;opacity:0.8;}
+.empty-state a{color:var(--navy);border-bottom:1px solid var(--gold);text-decoration:none;}
+.update-list{display:flex;flex-direction:column;}
+.update-card{display:grid;grid-template-columns:88px 1fr;gap:28px;padding:36px 0;border-top:1px solid var(--line);}
+.update-card:last-child{border-bottom:1px solid var(--line);}
+.update-mark{width:56px;height:56px;border-radius:2px;background:var(--navy-soft);background-size:cover;background-position:center;}
+.update-meta{color:var(--gold);display:block;margin-bottom:8px;}
+.update-card h3{font-size:1.25rem;font-weight:600;margin-bottom:10px;}
+.update-card h3 a{color:var(--ink);text-decoration:none;}
+.update-card h3 a:hover{color:var(--gold);}
+.update-card p{opacity:0.82;margin:0 0 10px;max-width:640px;}
+.update-body{opacity:0.9;line-height:1.75;}
+.update-body p{margin-bottom:20px;}
+@media (max-width:860px){.update-card{grid-template-columns:1fr;gap:10px;}}
+
 /* Contact */
 #contact-section{background:var(--navy);color:var(--paper);}
 #contact-section .section-head h2{color:var(--paper);}

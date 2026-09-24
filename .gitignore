@@ -1,0 +1,5 @@
+# Build output — regenerated on every Netlify build (see netlify.toml).
+# Never committed: keeping updates.json as the sole source of truth is the
+# whole point of automating generation.
+/public/
+/.build/

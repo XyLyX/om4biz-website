@@ -1,0 +1,3 @@
+[build]
+  command = "python3 scripts/build_updates.py && python3 scripts/build_public.py"
+  publish = "public"
