@@ -98,6 +98,7 @@ FOOTER = """<footer>
 </footer>
 
 <script src="/assets/reveal.js"></script>
+<script src="/assets/share.js"></script>
 </body>
 </html>
 """
@@ -171,7 +172,7 @@ def render_hub(entries):
 
 <nav class="breadcrumb"><div class="wrap"><a href="/">Home</a> / Insights</div></nav>
 
-<section class="page-hero">
+<section class="page-hero insights-hero">
   <div class="wrap">
     <span class="mono">Insights</span>
     <h1>News, launches and insights from across OM4Biz.</h1>
@@ -179,7 +180,7 @@ def render_hub(entries):
   </div>
 </section>
 
-<section>
+<section class="insights-main">
   <div class="wrap">
 """
     if not entries:
@@ -229,7 +230,8 @@ def render_entry(e):
     author = e.get("author", "")
     author_role = e.get("author_role", "")
     author_ld = f',"author":{{"@type":"Person","name":{json.dumps(author)},"url":"{BASE_URL}/leadership/"}}' if author else ""
-    byline = f'<p class="update-byline">By <strong>{escape_html(author)}</strong>{", " + escape_html(author_role) if author_role else ""}</p>' if author else ""
+    byline = f'<p class="update-byline">By <strong>{escape_html(author)}</strong></p>' if author else ""
+    share = share_html(canonical, e["title"])
     image_block = f'<img src="{e["image"]}" alt="{escape_html(e["title"])}" style="width:100%;border-radius:2px;margin-bottom:32px;">' if e["image"] else ""
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -263,22 +265,24 @@ def render_entry(e):
 
 <nav class="breadcrumb"><div class="wrap"><a href="/">Home</a> / <a href="/insights/">Insights</a> / {escape_html(e['title'])}</div></nav>
 
-<section class="page-hero">
+<section class="page-hero insights-hero">
   <div class="wrap">
     <span class="mono update-meta">{format_display_date(e["date"])} · {e["type"]}</span>
     <h1>{escape_html(e['title'])}</h1>
     <p class="lead">{escape_html(e['excerpt'])}</p>
     {byline}
+    {share}
   </div>
 </section>
 
-<section>
+<section class="insights-main">
   <div class="wrap" style="max-width:760px;">
     {image_block}
-    <div class="update-body reveal">
+    <div class="update-body">
 {e['body_html']}
     </div>
-    <p style="margin-top:56px;"><a href="/insights/" class="card-link">← Back to Insights</a></p>
+    <div style="margin-top:48px;">{share}</div>
+    <p style="margin-top:32px;"><a href="/insights/" class="card-link">← Back to Insights</a></p>
   </div>
 </section>
 
@@ -332,6 +336,18 @@ def render_feed(entries):
   </channel>
 </rss>
 """
+
+
+def share_html(url, title):
+    from urllib.parse import quote
+    u, t = quote(url, safe=""), quote(title, safe="")
+    return f"""<div class="share-bar" aria-label="Share this article">
+      <span class="share-label">Share</span>
+      <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url={u}" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.95 1.33-1.95 2.7V21h-4z"/></svg></a>
+      <a class="share-btn" href="https://twitter.com/intent/tweet?url={u}&amp;text={t}" target="_blank" rel="noopener" aria-label="Share on X (Twitter)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.2L2 3h6.33l4.37 5.78zm-1.08 16.2h1.7L7.4 4.73H5.58z"/></svg></a>
+      <a class="share-btn" href="https://wa.me/?text={t}%20{u}" target="_blank" rel="noopener" aria-label="Share on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.98L2 22l5.17-1.5A9.9 9.9 0 1 0 12.04 2zm0 18.1a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3.07.9.9-2.99-.2-.31a8.2 8.2 0 1 1 6.87 3.73zm4.5-6.14c-.25-.12-1.46-.72-1.69-.8-.22-.08-.39-.12-.55.13-.17.24-.64.8-.78.96-.14.17-.29.19-.53.07-.25-.13-1.05-.39-2-1.23-.73-.66-1.23-1.47-1.38-1.71-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.3-.02-.43-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.41-.55-.42h-.47c-.16 0-.43.06-.65.3-.22.25-.86.84-.86 2.05s.88 2.38 1 2.54c.12.17 1.73 2.64 4.2 3.7.58.26 1.04.41 1.4.52.59.19 1.12.16 1.54.1.47-.07 1.46-.6 1.66-1.17.21-.58.21-1.07.15-1.17-.06-.11-.23-.17-.47-.29z"/></svg></a>
+      <button class="share-btn" type="button" data-copy="{url}" aria-label="Copy link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.6 13.4a1 1 0 0 1 0-1.4l3.5-3.5a3 3 0 1 1 4.2 4.2l-2 2a1 1 0 1 1-1.4-1.4l2-2a1 1 0 1 0-1.4-1.4l-3.5 3.5a1 1 0 0 1-1.4 0zm2.8-2.8a1 1 0 0 1 0 1.4l-3.5 3.5a3 3 0 1 1-4.2-4.2l2-2a1 1 0 0 1 1.4 1.4l-2 2a1 1 0 1 0 1.4 1.4l3.5-3.5a1 1 0 0 1 1.4 0z"/></svg><span class="share-copied" role="status"></span></button>
+    </div>"""
 
 
 def format_display_date(iso_date):
