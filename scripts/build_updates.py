@@ -54,6 +54,7 @@ NAV = """<header class="nav">
       <li><a href="/what-we-do/">What We Do</a></li>
       <li><a href="/ventures/">Ventures</a></li>
       <li><a href="/insights/"{updates_active}>Insights</a></li>
+      <li><a href="/booking-assessment/">Booking Assessment</a></li>
       <li><a href="/leadership/">Leadership</a></li>
       <li><a href="/work-with-us/">Work With Us</a></li>
       <li><a href="/contact/" class="nav-cta">Contact</a></li>
@@ -76,6 +77,8 @@ FOOTER = """<footer>
           <li><a href="/insights/">Insights</a></li>
           <li><a href="/leadership/">Leadership</a></li>
           <li><a href="/contact/">Contact</a></li>
+          <li><a href="/booking-assessment/">Booking Experience Assessment</a></li>
+          <li><a href="/privacy-policy/">Privacy Policy</a></li>
         </ul>
       </div>
       <div>

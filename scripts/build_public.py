@@ -34,6 +34,7 @@ PAGE_DIRS = [
     "about", "what-we-do", "business-consulting", "business-operations-bpo",
     "customer-experience", "technology-ai", "venture-building", "ventures",
     "leadership", "work-with-us", "contact", "assets",
+    "booking-assessment", "privacy-policy",
 ]
 ROOT_FILES = ["index.html", "robots.txt", "sitemap.xml", "og-image.png"]
 
