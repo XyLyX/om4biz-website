@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Our Ventures | OM4Biz Portfolio</title>
-<meta name="description" content="Six businesses across real estate, interiors, technology, media, F&B and publishing — built, operated or developed through the OM4Biz platform.">
+<meta name="description" content="The portfolio includes operating businesses, emerging platforms and research initiatives at different stages of development.">
 <link rel="canonical" href="https://www.om4biz.com/ventures/">
 <link rel="alternate" type="application/rss+xml" title="OM4Biz Insights" href="https://www.om4biz.com/feed.xml">
 <meta property="og:title" content="Our Ventures | OM4Biz Portfolio">
-<meta property="og:description" content="ZenHomes, Design Code, FilsOnly, NavvyaSignal, D6 Kitchens and The Wasam — six businesses, one operating philosophy.">
+<meta property="og:description" content="The portfolio includes operating businesses, emerging platforms and research initiatives at different stages of development.">
 <meta property="og:image" content="https://www.om4biz.com/og-image.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.om4biz.com/ventures/">
@@ -17,6 +17,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/style.css">
+<style>
+.portfolio-nav { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 40px; }
+.portfolio-nav .btn { white-space: normal; }
+.portfolio-group + .portfolio-group { margin-top: 48px; }
+.portfolio-group h2, #case-d6 { scroll-margin-top: 120px; }
+.portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 16px; list-style: none; padding: 0; margin: 16px 0 0; }
+.portfolio-grid h3 a, .portfolio-grid p a { text-decoration: underline; text-underline-offset: 0.18em; }
+</style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.om4biz.com/"},{"@type":"ListItem","position":2,"name":"Ventures","item":"https://www.om4biz.com/ventures/"}]}
 </script>
@@ -44,80 +52,144 @@
 <section class="page-hero">
   <div class="wrap">
     <span class="mono">OM4Biz Portfolio</span>
-    <h1>Businesses built, operated or developed through the OM4Biz platform.</h1>
-    <p class="lead">OM4Biz is not simply a holding company. It's an operating platform through which we build, develop and manage businesses across different markets and sectors — at different stages of maturity, ownership and commercial scale.</p>
+    <h1>Our portfolio</h1>
+    <p class="lead">The portfolio includes operating businesses, emerging platforms and research initiatives at different stages of development.</p>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <p class="portfolio-note reveal">Six businesses, six different markets, one operating philosophy: customer first, technology enabled, operationally disciplined, commercially accountable.</p>
+    <nav class="portfolio-nav" aria-label="Portfolio categories">
+      <a class="btn btn-outline" href="#business-property-design">Business, Property &amp; Design</a>
+      <a class="btn btn-outline" href="#ai-technology-digital-platforms">AI, Technology &amp; Digital Platforms</a>
+      <a class="btn btn-outline" href="#media-intelligence-creative">Media, Intelligence &amp; Creative</a>
+      <a class="btn btn-outline" href="#lifestyle-heritage-hospitality">Lifestyle, Heritage &amp; Hospitality</a>
+      <a class="btn btn-outline" href="#community-initiatives">Community Initiatives</a>
+    </nav>
 
-    <div class="venture reveal">
-      <div class="venture-mark">ZH</div>
-      <div>
-        <span class="mono sector">Real Estate Advisory</span>
-        <h3>ZenHomes by Navvya <span class="status">Active</span></h3>
-        <p>Dubai real estate advisory for NRI and resident investors navigating the UAE property market.</p>
-        <a class="ext" href="https://zenhomesglobal.com" target="_blank" rel="noopener">zenhomesglobal.com ↗</a>
-      </div>
+    <div class="portfolio-group" aria-labelledby="business-property-design">
+      <h2 id="business-property-design">Business, Property &amp; Design</h2>
+      <ul class="portfolio-grid">
+        <li class="service-card">
+          <h3><a href="/what-we-do/">OM4Biz Global Services</a></h3>
+          <p>Business consulting</p>
+        </li>
+        <li class="service-card">
+          <h3><a href="https://zenhomesglobal.com">Zen Homes</a></h3>
+          <p>Real estate advisory</p>
+        </li>
+        <li class="service-card">
+          <h3><a href="https://navyak.app">Navyak</a></h3>
+          <p>Digital property marketplace</p>
+        </li>
+        <li class="service-card">
+          <h3><a href="https://designcode.ae">Design Code Studios</a></h3>
+          <p>Interior design and fit-out</p>
+        </li>
+        <li class="service-card">
+          <h3>Rate Manifest</h3>
+          <p>Travel and hospitality platform</p>
+        </li>
+        <li class="service-card">
+          <h3>BIENQ</h3>
+          <p>Buyer intelligence and qualification for Dubai real estate</p>
+        </li>
+        <li class="service-card">
+          <h3>CropDesk</h3>
+          <p>Fresh produce sourcing for foodservice, a service from OM4Biz Global Services.</p>
+        </li>
+      </ul>
     </div>
 
-    <div class="venture reveal">
-      <div class="venture-mark">DC</div>
-      <div>
-        <span class="mono sector">Interior Design & Fit-Out</span>
-        <h3>Design Code Studio <span class="status">Active</span></h3>
-        <p>A turnkey interior fit-out studio delivering end-to-end design and execution for residential and commercial spaces.</p>
-        <a class="ext" href="https://designcode.ae" target="_blank" rel="noopener">designcode.ae ↗</a>
-      </div>
+    <div class="portfolio-group" aria-labelledby="ai-technology-digital-platforms">
+      <h2 id="ai-technology-digital-platforms">AI, Technology &amp; Digital Platforms</h2>
+      <ul class="portfolio-grid">
+        <li class="service-card">
+          <h3><a href="https://www.filsonly.com">FilsOnly</a></h3>
+          <p>Financial management technology</p>
+        </li>
+        <li class="service-card">
+          <h3><a href="https://legischola.com">Legischola</a></h3>
+          <p>AI-powered legal education</p>
+        </li>
+        <li class="service-card">
+          <h3><a href="https://nourivia.app">Nourivia</a></h3>
+          <p>AI nutrition intelligence</p>
+        </li>
+        <li class="service-card">
+          <h3><a href="https://occivo.com">OCCIVO</a></h3>
+          <p>AI-powered gifting concierge</p>
+        </li>
+        <li class="service-card">
+          <h3><a href="https://nioqa.app">NIOQA</a></h3>
+          <p>Social discovery platform</p>
+        </li>
+        <li class="service-card">
+          <h3>Clubbz</h3>
+          <p>Food and logistics marketplace</p>
+        </li>
+        <li class="service-card">
+          <h3>AEAAP</h3>
+          <p>Autonomous AI economic research</p>
+        </li>
+        <li class="service-card">
+          <h3><a href="https://ideahq.io">ideaHQ</a></h3>
+        </li>
+      </ul>
     </div>
 
-    <div class="venture reveal">
-      <div class="venture-mark">FO</div>
-      <div>
-        <span class="mono sector">Technology / AI</span>
-        <h3>FilsOnly <span class="status">Beta</span></h3>
-        <p>An AI-powered executive assistant designed to remember, organise and act on your email conversations. Based in the UAE.</p>
-        <a class="ext" href="https://www.filsonly.com" target="_blank" rel="noopener">filsonly.com ↗</a>
-      </div>
+    <div class="portfolio-group" aria-labelledby="media-intelligence-creative">
+      <h2 id="media-intelligence-creative">Media, Intelligence &amp; Creative</h2>
+      <ul class="portfolio-grid">
+        <li class="service-card">
+          <h3><a href="https://navvyasignal.com">NavvyaSignal</a></h3>
+          <p>Geopolitical and market intelligence</p>
+        </li>
+        <li class="service-card">
+          <h3>XYLYX Studios</h3>
+          <p>AI-enabled creative production</p>
+        </li>
+        <li class="service-card">
+          <h3><a href="https://dovriqo.com">Dovriqo</a></h3>
+          <p>Software and productivity media</p>
+        </li>
+        <li class="service-card">
+          <h3><a href="https://imagitome.com">Imagitome Publishing</a></h3>
+          <p>AI-assisted book publishing</p>
+        </li>
+      </ul>
     </div>
 
-    <div class="venture reveal">
-      <div class="venture-mark">NS</div>
-      <div>
-        <span class="mono sector">Intelligence / Media</span>
-        <h3>NavvyaSignal <span class="status">Active</span></h3>
-        <p>An independent publication delivering geopolitical and market intelligence for readers tracking global risk and opportunity.</p>
-        <a class="ext" href="https://navvyasignal.com" target="_blank" rel="noopener">navvyasignal.com ↗</a>
-      </div>
+    <div class="portfolio-group" aria-labelledby="lifestyle-heritage-hospitality">
+      <h2 id="lifestyle-heritage-hospitality">Lifestyle, Heritage &amp; Hospitality</h2>
+      <ul class="portfolio-grid">
+        <li class="service-card">
+          <h3><a href="https://zarbaft.art">Zarbaft</a></h3>
+          <p>Heritage textiles and fashion</p>
+        </li>
+        <li class="service-card">
+          <h3>Navya Rituals</h3>
+          <p>Cultural and heritage initiative</p>
+        </li>
+        <li class="service-card">
+          <h3><a href="https://d6kitchens.com">D6 Kitchens</a></h3>
+          <p>Multi-brand cloud kitchens. <a href="#case-d6">Read the case study</a>.</p>
+        </li>
+        <li class="service-card">
+          <h3><a href="https://thewasam.com">The Wasam</a></h3>
+          <p>Entrepreneurial venture</p>
+        </li>
+      </ul>
     </div>
 
-    <div class="venture reveal">
-      <div class="venture-mark">D6</div>
-      <div>
-        <span class="mono sector">Food & Beverage</span>
-        <h3>D6 Kitchens <span class="status">Active</span></h3>
-        <p>A Dubai-born F&B venture evolved from a managed cloud kitchen into a technology-enabled, multi-brand delivery and takeaway operation, with F&B management consultancy capabilities. <a href="#case-d6" style="border-bottom:1px solid var(--gold);text-decoration:none;">Read the case study ↓</a></p>
-        <a class="ext" href="https://d6kitchens.com" target="_blank" rel="noopener">d6kitchens.com ↗</a>
-      </div>
-    </div>
-
-    <div class="venture reveal">
-      <div class="venture-mark">TW</div>
-      <div>
-        <span class="mono sector">Media / Publishing</span>
-        <h3>The Wasam (الوسام) <span class="status">Active</span></h3>
-        <p>A 12-vertical rotating spotlight and credibility magazine, profiling leaders and organizations across a rotating set of industries.</p>
-        <a class="ext" href="https://thewasam.com" target="_blank" rel="noopener">thewasam.com ↗</a>
-      </div>
-    </div>
-
-    <div class="venture-close reveal">
-      <p class="big">One group. Multiple businesses. Shared operating DNA.</p>
-      <div class="tag-cloud">
-        <span>Customer first</span><span>Technology enabled</span><span>Operationally disciplined</span><span>Commercially accountable</span>
-      </div>
+    <div class="portfolio-group" aria-labelledby="community-initiatives">
+      <h2 id="community-initiatives">Community Initiatives</h2>
+      <ul class="portfolio-grid">
+        <li class="service-card">
+          <h3><a href="https://akhdarha.com">AKHDARHA</a></h3>
+          <p>Student-led community recycling initiative</p>
+        </li>
+      </ul>
     </div>
 
     <div class="section-head reveal" style="margin-top:96px;">
@@ -138,7 +210,7 @@
 
     <div class="case-study reveal">
       <span class="mono">In focus</span>
-      <h3>ZenHomes by Navvya</h3>
+      <h3>Zen Homes</h3>
       <div class="case-grid">
         <div><span class="lbl">Focus</span><p>Dubai real estate advisory built specifically for NRI and resident investors who need to navigate the UAE market with confidence.</p></div>
         <div><span class="lbl">Approach</span><p>A dedicated advisory platform, rather than a generalist brokerage — built on the same customer-experience discipline OM4Biz applies across its portfolio.</p></div>
@@ -148,7 +220,7 @@
 
     <div class="case-study reveal">
       <span class="mono">In focus</span>
-      <h3>Design Code Studio</h3>
+      <h3>Design Code Studios</h3>
       <div class="case-grid">
         <div><span class="lbl">Focus</span><p>Turnkey interior fit-out for residential, commercial and hospitality spaces, from design through execution.</p></div>
         <div><span class="lbl">Approach</span><p>One studio accountable for the full process — design and build under a single operating team, rather than handed off between separate vendors.</p></div>
@@ -194,7 +266,7 @@
         <h4>Ventures</h4>
         <ul>
           <li><a href="https://zenhomesglobal.com" target="_blank" rel="noopener">ZenHomes</a></li>
-          <li><a href="https://designcode.ae" target="_blank" rel="noopener">Design Code Studio</a></li>
+          <li><a href="https://designcode.ae" target="_blank" rel="noopener">Design Code Studios</a></li>
           <li><a href="https://d6kitchens.com" target="_blank" rel="noopener">D6 Kitchens</a></li>
           <li><a href="https://navvyasignal.com" target="_blank" rel="noopener">NavvyaSignal</a></li>
           <li><a href="https://thewasam.com" target="_blank" rel="noopener">The Wasam</a></li>
